@@ -11,7 +11,7 @@ class Person:
 
 
 class Student(Person):
-    def __init__(self, name, surname, date):
+    def __init__(self, name, surname, date, city='Kiev'):
         super().__init__(name, surname, date)
         self.city = 'Kiev'
 
