@@ -11,8 +11,8 @@ class Person:
 
 
 class Student(Person):
-    def __init__(self, name, surname, date, city='Kiev'):
-        super().__init__(name, surname, date)
+    def __init__(self, name, surname, year, city='Kiev'):
+        super().__init__(name, surname, year)
         self.city = 'Kiev'
 
     def add_score(self, score=None):
@@ -21,6 +21,9 @@ class Student(Person):
             sc.append(random.randint(6, 9))
             score = ''.join(map(str, sc))
         return score
+
+    def __eq__(self, other):
+        return self.surname == other.surname and self.name == other.name and self.year == other.year
 
     def __str__(self):
         return f'Name: {self.name} / Surname: {self.surname} / Birth year: {self.year} / {self.add_score()} score / {self.city}'
@@ -31,6 +34,13 @@ class Group:
         self.students = []
 
     def add_student(self, student: Student):
+        if len(self.students) >= 10:
+            return -1
+
+        for item in self.students:
+            if item == student:
+                return -2
+
         self.students.append(student)
 
     def del_student(self, student: Student):
@@ -58,6 +68,8 @@ per7 = Student('Taras', 'Tarasovich', '1990')
 per8 = Student('Vadim', 'Vadimovich', '1992')
 per9 = Student('Ihor', 'Ihorovich', '1990')
 per10 = Student('Oleh', 'Olehovich', '1992')
+per11 = Student('Oleh', 'Olehovich', '1992')
+per12 = Student('Oleh1', 'Olehovich1', '1992')
 
 
 gr_avia = Group('Aircraft Maintenance Faculty\n')
