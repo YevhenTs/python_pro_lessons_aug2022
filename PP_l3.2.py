@@ -14,7 +14,7 @@ class Person:
 class Student(Person):
     def __init__(self, name, surname, year, city='Kiev'):
         super().__init__(name, surname, year)
-        self.city = 'Kiev'
+        self.city = city
 
     def add_score(self, score=None):
         sc = []
@@ -40,13 +40,15 @@ class MaxStudentsError(Exception):
 
 
 class Group:
+    MAX_STUDENTS = 10
+
     def __init__(self, course):
         self.title = course.rjust(48, ' ')
         self.students = []
 
     def add_student(self, student: Student):
         try:
-            if len(self.students) >= 10:
+            if len(self.students) >= Group.MAX_STUDENTS:
                 raise MaxStudentsError('Too many student in group!')
         except MaxStudentsError as err:
             print(err)
@@ -70,6 +72,7 @@ class Group:
         res += f'{self.title}\n'
         res += '\n'.join(map(str, self.students))
         return res
+
 
 
 per1 = Student('John', 'Johnov', '1992')
