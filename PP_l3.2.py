@@ -24,7 +24,7 @@ class Student(Person):
         return score
 
     def __eq__(self, other):
-        return self.surname == other.surname and self.name == other.name and self.year == other.year
+        return (self.surname, self.name, self.year) == (other.surname, other.name, other.year)
 
     def __str__(self):
         return f'Name: {self.name} / Surname: {self.surname} / Birth year: {self.year} / {self.add_score()} score / {self.city}'
