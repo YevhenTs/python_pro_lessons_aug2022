@@ -1,11 +1,11 @@
-def gen_range(start, stop):
+def gen_range(start, stop, step):
     i = start
     while i < stop:
         yield i
-        i += 1
+        i += step
 
 
-x = gen_range(1, 100)
+x = gen_range(1, 100, 20)
 
 for item in x:
     print(item)
