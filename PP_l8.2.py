@@ -1,6 +1,6 @@
-import time
+import timeit
 
-
+var_1 = """
 def fibonachi(n):
     if n == 0:
         return 0
@@ -8,14 +8,14 @@ def fibonachi(n):
         return 1
     else:
         return fibonachi(n-1)+fibonachi(n-2)
-
-
-start1 = time.time()
+        
 print(fibonachi(30))
-stop1 = time.time()
-print('Recursive Fibonachi Time:', stop1-start1)
+"""
 
 
+print(timeit.timeit(var_1, number=5))
+
+var_2 = """
 def mem_fibonachi_1():
     mem = {0: 0, 1: 1}
 
@@ -25,12 +25,12 @@ def mem_fibonachi_1():
         return mem[n]
 
     return mem_fibonachi_2
-
-
-start2 = time.time()
+    
 print(mem_fibonachi_1()(30))
-stop2 = time.time()
-print('Memoization Fibonachi Time:', stop2-start2)
+"""
+
+
+print(timeit.timeit(var_2, number=5))
 
 
 
