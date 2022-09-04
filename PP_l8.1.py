@@ -9,14 +9,15 @@ def geo(first, n):
     second_number = 2
     index = 1
     while index <= n:
+        yield first
         next_number = first * second_number
         first = next_number
-        index = index + 1
+        index += 1
         numbers.append(next_number)
-    return numbers
 
 
-print(number_seq(1, 10, geo))
+print(number_seq(1, 11, geo))
+print(geo(1, 10))
 
-for num in number_seq(1, 10, geo):
+for num in number_seq(1, 11, geo):
     print(num)
