@@ -1,8 +1,9 @@
-def decorator(f):
-    s = 0
+s = 0
 
+
+def decorator(f):
     def res(*args):
-        nonlocal s
+        global s
         f(*args)
         s += 1
         return s
@@ -20,3 +21,6 @@ print(mul(2, 3))
 print(mul(2, 3))
 l = mul(2, 3)
 print(l)
+
+
+print(f'Called {s} times')
