@@ -10,9 +10,8 @@ def decorator(n, adress):
                 f(*args)
                 count += 1
             end = time.time()
-            file = open(adress, "w")
-            file.write(f'{n} times per {end - start} s.')
-            file.close()
+            with open(adress, 'w') as g:
+                print(f'{n} times per {end - start} s.', file=g)
         return my_function
     return wrapped
 
