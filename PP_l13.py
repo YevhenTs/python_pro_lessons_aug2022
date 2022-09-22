@@ -8,8 +8,12 @@ class Prime(abc.ABC):
         pass
 
     @classmethod
-    def register(cls, Prime3):
-        pass
+    def __subclasshook__(abc_class, Prime3):
+        for sub_class in Prime3.__mro__:
+            for property_name in sub_class.__dict__:
+                if property_name == "prime":
+                    return True
+        return False
 
 
 class Prime2(Prime):
