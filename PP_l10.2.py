@@ -2,7 +2,7 @@ def add_str(text):
     def wrapped(cls):
         def my_function(*args, **kwargs):
             res = cls(*args, **kwargs)
-            return text + res.__str__()
+            return text + res
         return my_function
     return wrapped
 
